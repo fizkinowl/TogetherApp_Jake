@@ -13,14 +13,26 @@
         android:theme="@style/Theme.TogetherCalendar"
         tools:targetApi="31">
         <activity
+            android:name=".UserProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".WeekViewActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".DailyCalendarActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".EventEditActivity"
-            android:exported="false"/>
+            android:exported="false" />
+        <activity
+            android:name=".UserLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserRegistrationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

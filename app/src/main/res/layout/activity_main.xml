@@ -19,6 +19,15 @@
         android:onClick="weeklyAction"
         android:textSize="20sp"/>
 
+    <!-- Test btn to change Activities (Login)    -->
+    <Button
+        android:id="@+id/test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:onClick="login"/>
 
     <LinearLayout
         android:layout_width="match_parent"

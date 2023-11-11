@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".UserLoginActivity">
+
+    <TextView
+        android:id="@+id/login_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="login"
+        android:textSize="50px"
+        android:textColor="@color/black"
+        android:layout_alignParentTop = "true"
+        android:layout_centerHorizontal = "true"
+        android:layout_marginTop="90px" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome back"
+        android:textSize="100px"
+        android:textColor="@color/black"
+        android:layout_alignParentTop = "true"
+        android:layout_centerHorizontal = "true"
+        android:layout_marginTop="450px"
+        />
+
+    <EditText
+        android:id="@+id/username_login_textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="40dp"
+        android:hint="username"
+        android:textColorHint="@color/black"
+        android:textCursorDrawable="@null"
+        android:inputType="text"
+        android:drawableStart="@drawable/ic_user_icon"
+        android:drawablePadding="5dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="270dp"
+        android:gravity="start"/>
+
+    <EditText
+        android:id="@+id/password_login_TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="password"
+        android:textCursorDrawable="@null"
+        android:drawableStart="@drawable/ic_password"
+        android:textColorHint="@color/black"
+        android:drawablePadding="5dp"
+        android:inputType="textPassword"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="340dp"
+        android:gravity="start" />
+
+    <Button
+        android:id="@+id/login_Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LOGIN"
+        android:textAllCaps="false"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="550dp"
+        android:textColor="#d3d8e3"
+        android:textSize="20dp"
+        android:onClick="login"
+        android:background="@drawable/round_button"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/data"
+        android:layout_width="wrap_content"
+        android:layout_height="23dp"
+        android:layout_marginTop="620dp"
+        android:layout_marginLeft="125dp"
+        android:fontFamily="sans-serif"
+        android:text="Don't have an account? Click"
+        android:textColor="#d3d8e3"
+        android:textSize="12dp"
+        android:focusable="true" />
+
+    <TextView
+        android:id="@+id/signUp_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="23dp"
+        android:layout_marginTop="620dp"
+        android:fontFamily="sans-serif-medium"
+        android:clickable="true"
+        android:text=" here."
+        android:layout_toEndOf="@+id/data"
+        android:textColor="#00d9d9"
+        android:textSize="12dp"
+        android:onClick="register"
+        android:focusable="true" />
+
+
+
+</RelativeLayout>
