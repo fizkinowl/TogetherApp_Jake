@@ -2,4 +2,19 @@
     <string name="app_name">CalendarAppExample</string>
     <string name="back"><![CDATA[<-]]></string>
     <string name="forward"><![CDATA[->]]></string>
+    <string name="john">John</string>
+    <string name="hello">Hello</string>
+    <string name="search_elements">Search elements</string>
+    <string name="goals">Goals</string>
+    <string name="calendar">Calendar</string>
+    <string name="health">Health</string>
+    <string name="comfort">Comfort</string>
+    <string name="dummy_text">This is just dummy text to show how something might show up in this </string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="settings">Settings</string>
+    <string name="events">Events</string>
+    <string name="chat">Chat</string>
+    <string name="account">Account</string>
+    <string name="trending">Trending</string>
 </resources>
