@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
+
 public class UserLoginActivity extends AppCompatActivity {
 
     EditText username, password;
@@ -22,10 +24,10 @@ public class UserLoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_login);
 
-        username = (EditText) findViewById(R.id.username_login_textView);
-        password = (EditText) findViewById(R.id.password_login_TextView);
-        btnlogin = (Button) findViewById(R.id.login_Button);
-        signUp = (TextView) findViewById(R.id.signUp_TextView);
+        username = findViewById(R.id.username_login_textView);
+        password = findViewById(R.id.password_login_TextView);
+        btnlogin = findViewById(R.id.login_Button);
+        signUp = findViewById(R.id.signUp_TextView);
         DB = new DBHelper(this);
 
         btnlogin.setOnClickListener(new View.OnClickListener() {
@@ -34,41 +36,36 @@ public class UserLoginActivity extends AppCompatActivity {
                 String user = username.getText().toString();
                 String pass = password.getText().toString();
 
-                if(user.equals("")||pass.equals(""))
-                    Toast.makeText(UserLoginActivity.this, "PLease enter all the fields",Toast.LENGTH_SHORT).show();
-                else{
-                    Boolean checkUserPass = DB.checkusernamepassword(user,pass);
-                    if(checkUserPass==true){
-                        Toast.makeText(UserLoginActivity.this, "Signed in successfully", Toast.LENGTH_SHORT).show();
-                        // TODO: 11/10/2023 fix intent (curr set to HomeActivity) (where to send to)
-                        Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
-                        startActivity(intent);
-                    }else{
-                        Toast.makeText(UserLoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
+                if (user.equals("")||pass.equals("")) {
+                    Toast.makeText(UserLoginActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Retrieve hashed password from the database
+                    String storedHashedPassword = DB.getStoredPassword(user);
+
+                    if (storedHashedPassword != null) {
+                        // Verify entered password against stored hashed password
+                        boolean isPasswordCorrect = BCrypt.verifyer().verify(pass.toCharArray(), storedHashedPassword).verified;
+
+                        if (isPasswordCorrect) {
+                            Toast.makeText(UserLoginActivity.this, "Signed in successfully", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(UserLoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(UserLoginActivity.this, "User not found", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
-
         });
 
-        // TODO: 11/10/2023  maybe don't need anymore (comment-Out if register works)
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),UserRegistrationActivity.class);
                 startActivity(intent);
-
             }
         });
-
-
-    };
-
-
-    public void register(View view) {
-        Intent intent = new Intent(this, UserRegistrationActivity.class);
-        startActivity(intent);
     }
-
-
 }

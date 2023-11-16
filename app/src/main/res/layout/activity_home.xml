@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
+    android:background="@drawable/background"
     tools:context=".HomeActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,9 +53,9 @@
             app:layout_constraintBottom_toBottomOf="@+id/textHello"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textHello"
-            
+
             tools:ignore="UseAppTint" />
-        
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -69,6 +69,7 @@
             app:layout_constraintTop_toBottomOf="@+id/imageMenu">
 
             <EditText
+                android:id="@+id/search_Home_EditText"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
@@ -81,8 +82,9 @@
                 android:textColor="@color/colorAccent"
                 android:textSize="16sp"
                 android:importantForAutofill="no" />
-            
+
             <ImageView
+                android:id="@+id/searchBtn_Home_Button"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/search_icon_background"
@@ -91,7 +93,7 @@
                 android:src="@drawable/ic_search"
                 android:tint="@color/colorPrimary"
                 tools:ignore="UseAppTint" />
-            
+
         </LinearLayout>
 
 
@@ -123,7 +125,8 @@
                 app:layout_constraintDimensionRatio="H, 1:1"
                 app:layout_constraintEnd_toStartOf="@id/layoutEvents"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                android:onClick="sendToCalendar">
 
                 <ImageView
                     android:layout_width="100dp"
@@ -156,7 +159,8 @@
                 app:layout_constraintDimensionRatio="H, 1:1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/layoutCalendar"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                android:onClick="sendToEvents">
 
                 <ImageView
                     android:layout_width="100dp"
@@ -190,7 +194,8 @@
                 app:layout_constraintDimensionRatio="H, 1:1"
                 app:layout_constraintEnd_toStartOf="@+id/layoutEvents"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/layoutCalendar">
+                app:layout_constraintTop_toBottomOf="@+id/layoutCalendar"
+                android:onClick="sendToChat">
 
                 <ImageView
                     android:layout_width="100dp"
@@ -223,7 +228,8 @@
                 app:layout_constraintDimensionRatio="H, 1:1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/layoutCalendar"
-                app:layout_constraintTop_toBottomOf="@+id/layoutEvents">
+                app:layout_constraintTop_toBottomOf="@+id/layoutEvents"
+                android:onClick="sendToAccount">
 
                 <ImageView
                     android:layout_width="100dp"
