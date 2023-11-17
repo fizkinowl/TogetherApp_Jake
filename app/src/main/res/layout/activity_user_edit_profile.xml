@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".UserProfileActivity"
+    android:background="@drawable/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Top Box -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="290dp">
+
+            <ImageView
+                android:id="@+id/register_ImageView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/no_profile_pic" />
+
+            <TextView
+                android:id="@+id/show_welcome_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/register_ImageView"
+                android:text="@string/welcome_username"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textColor="@color/black"/>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:layout_margin="15dp"
+            android:background="#77ffffff">
+
+            <!--Show Full Name -->
+            <ImageView
+                android:id="@+id/ic_username"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/ic_user_icon" />
+
+            <EditText
+                android:id="@+id/username_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/ic_username"
+                android:hint="Username"
+                android:textColorHint="@color/black"
+                android:layout_marginStart="50dp"
+                android:textSize="18sp"/>
+
+            <View
+                android:id="@+id/divider_name"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/username_TextView"
+                android:background="#6C6C6C"
+                />
+
+            <!-- Show Email -->
+            <ImageView
+                android:id="@+id/ic_email"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/ic_email"
+                android:layout_below="@id/divider_name"
+                android:layout_marginTop="20dp" />
+
+            <EditText
+                android:id="@+id/email_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@id/ic_email"
+                android:hint="Email"
+                android:textColorHint="@color/black"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/divider_name"
+                android:textSize="18sp"/>
+
+            <View
+                android:id="@+id/divider_email"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/email_TextView"
+                android:background="@color/light_grey1"/>
+
+            <!-- Show Mobile # -->
+            <ImageView
+                android:id="@+id/ic_mobile"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/ic_mobile"
+                android:layout_below="@id/divider_email"
+                android:layout_marginTop="20dp" />
+
+            <EditText
+                android:id="@+id/mobile_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@id/ic_mobile"
+                android:hint="Mobile #"
+                android:textColorHint="@color/black"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/divider_email"
+                android:textSize="18sp"/>
+
+            <View
+                android:id="@+id/divider_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/mobile_TextView"
+                android:background="@color/light_grey1"/>
+
+
+            <!-- Show Availability -->
+            <ImageView
+                android:id="@+id/ic_calendar_check"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/ic_calendar_check"
+                android:layout_below="@id/divider_mobile"
+                android:layout_marginTop="20dp" />
+
+            <EditText
+                android:id="@+id/available_EditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@id/ic_calendar_check"
+                android:hint="Availability"
+                android:textColorHint="@color/black"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/divider_mobile"
+                android:textSize="18sp"/>
+
+            <View
+                android:id="@+id/divider_available"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/available_EditText"
+                android:background="@color/light_grey1"/>
+
+
+            <!-- Show Location -->
+            <ImageView
+                android:id="@+id/ic_location"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/ic_location"
+                android:layout_below="@id/divider_available"
+                android:layout_marginTop="20dp" />
+
+            <EditText
+                android:id="@+id/location_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider_available"
+                android:layout_alignStart="@id/ic_location"
+                android:layout_marginStart="49dp"
+                android:layout_marginTop="21dp"
+                android:hint="Location"
+                android:text="Location"
+                android:textColorHint="@color/black"
+                android:textSize="18sp" />
+
+            <View
+                android:id="@+id/divider_location"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/location_TextView"
+                android:background="@color/light_grey1"/>
+
+
+            <!-- Show Bio -->
+            <ImageView
+                android:id="@+id/ic_info"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/ic_info"
+                android:layout_below="@id/divider_location"
+                android:layout_marginTop="20dp" />
+
+            <EditText
+                android:id="@+id/info_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@id/ic_info"
+                android:hint="About"
+                android:textColorHint="@color/black"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/divider_location"
+                android:textSize="18sp"/>
+
+            <View
+                android:id="@+id/divider_info"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/info_TextView"
+                android:background="@color/light_grey1"/>
+
+            <Button
+                android:id="@+id/save_Btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider_info"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/round_button"
+                android:gravity="center"
+                android:onClick="login"
+                android:text="@string/save_changes"
+                android:textAllCaps="false"
+                android:textColor="#d3d8e3"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/cancel_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/save_Btn"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/round_button"
+                android:gravity="center"
+                android:onClick="Cancel"
+                android:text="@string/cancel_changes"
+                android:textAllCaps="false"
+                android:textColor="#d3d8e3"
+                android:textSize="20dp" />
+
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</ScrollView>

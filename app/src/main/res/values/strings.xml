@@ -17,4 +17,7 @@
     <string name="chat">Chat</string>
     <string name="account">Account</string>
     <string name="trending">Trending</string>
+    <string name="cancel_changes">Cancel Changes</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="welcome_username">Welcome, @username</string>
 </resources>
