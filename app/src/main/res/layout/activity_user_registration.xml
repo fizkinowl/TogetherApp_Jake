@@ -51,7 +51,7 @@
                 android:background="@drawable/ic_user_icon" />
 
             <EditText
-                android:id="@+id/username_TextView"
+                android:id="@+id/username_prof_EditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/ic_username"
@@ -65,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="20dp"
-                android:layout_below="@id/username_TextView"
+                android:layout_below="@id/username_prof_EditText"
                 android:background="#6C6C6C"
                 />
 
@@ -79,7 +79,7 @@
                 android:layout_marginTop="20dp" />
 
             <EditText
-                android:id="@+id/email_TextView"
+                android:id="@+id/email_prof_EditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@id/ic_email"
@@ -95,7 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="20dp"
-                android:layout_below="@id/email_TextView"
+                android:layout_below="@id/email_prof_EditText"
                 android:background="@color/light_grey1"/>
 
             <!-- Show Mobile # -->
@@ -108,7 +108,7 @@
                 android:layout_marginTop="20dp" />
 
             <EditText
-                android:id="@+id/mobile_TextView"
+                android:id="@+id/mobile_prof_EditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@id/ic_mobile"
@@ -124,7 +124,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="20dp"
-                android:layout_below="@id/mobile_TextView"
+                android:layout_below="@id/mobile_prof_EditText"
                 android:background="@color/light_grey1"/>
 
 

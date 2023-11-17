@@ -28,11 +28,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/register_ImageView"
-                android:text="Welcome, @username"
-                android:layout_centerHorizontal="true"
+                android:text="Welcome, "
+                android:layout_marginLeft="115dp"
                 android:layout_marginTop="15dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/textUsername_Profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/show_welcome_textView"
+                android:layout_alignBottom="@+id/show_welcome_textView"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="97dp"
+                android:layout_marginBottom="0dp"
+                android:layout_toEndOf="@+id/show_welcome_textView"
+                android:text="@string/john"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textColor="@color/black" />
+
         </RelativeLayout>
 
 
@@ -51,7 +68,7 @@
                 android:background="@drawable/ic_user_icon" />
 
             <TextView
-                android:id="@+id/username_TextView"
+                android:id="@+id/username_prof_EditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/ic_username"
@@ -65,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="20dp"
-                android:layout_below="@id/username_TextView"
+                android:layout_below="@id/username_prof_EditText"
                 android:background="#6C6C6C"
                 />
 
@@ -79,7 +96,7 @@
                 android:layout_marginTop="20dp" />
 
             <TextView
-                android:id="@+id/email_TextView"
+                android:id="@+id/email_prof_EditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@id/ic_email"
@@ -95,7 +112,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="20dp"
-                android:layout_below="@id/email_TextView"
+                android:layout_below="@id/email_prof_EditText"
                 android:background="@color/light_grey1"/>
 
             <!-- Show Mobile # -->
@@ -108,7 +125,7 @@
                 android:layout_marginTop="20dp" />
 
             <TextView
-                android:id="@+id/mobile_TextView"
+                android:id="@+id/mobile_prof_EditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@id/ic_mobile"
@@ -124,7 +141,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="20dp"
-                android:layout_below="@id/mobile_TextView"
+                android:layout_below="@id/mobile_prof_EditText"
                 android:background="@color/light_grey1"/>
 
 
@@ -168,7 +185,7 @@
                 android:layout_marginTop="20dp" />
 
             <TextView
-                android:id="@+id/location_TextView"
+                android:id="@+id/location_prof_EditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@id/ic_location"
@@ -184,7 +201,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="20dp"
-                android:layout_below="@id/location_TextView"
+                android:layout_below="@id/location_prof_EditText"
                 android:background="@color/light_grey1"/>
 
 
@@ -198,7 +215,7 @@
                 android:layout_marginTop="20dp" />
 
             <TextView
-                android:id="@+id/info_TextView"
+                android:id="@+id/info_prof_EditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@id/ic_info"
@@ -214,8 +231,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="20dp"
-                android:layout_below="@id/info_TextView"
+                android:layout_below="@id/info_prof_EditText"
                 android:background="@color/light_grey1"/>
+
+            <Button
+                android:id="@+id/edit_Btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider_info"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/round_button"
+                android:gravity="center"
+                android:onClick="editProfile"
+                android:text="@string/edit_profile"
+                android:textAllCaps="false"
+                android:textColor="#d3d8e3"
+                android:textSize="20dp" />
 
         </RelativeLayout>
 

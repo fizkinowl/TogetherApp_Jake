@@ -20,4 +20,5 @@
     <string name="cancel_changes">Cancel Changes</string>
     <string name="save_changes">Save Changes</string>
     <string name="welcome_username">Welcome, @username</string>
+    <string name="edit_profile">Edit Profile</string>
 </resources>

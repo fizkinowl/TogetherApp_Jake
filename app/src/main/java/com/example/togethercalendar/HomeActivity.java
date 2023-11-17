@@ -29,8 +29,13 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        //Change textUserName to logged in usersName
+        Intent i = getIntent();
+        String name = i.getStringExtra("USERNAME");
+        ((TextView)findViewById(R.id.textUsername)).setText(name);
+
         username = (TextView) findViewById(R.id.textUsername);
-        // TODO: 11/12/2023 fix search entry and button
+        // TODO: 11/17/2023 fix search entry and button
 //        searchTxt = (EditText) findViewById(R.id.search_Home_EditText);
 //        searchBtn = (ImageView) findViewById(R.id.searchBtn_Home_Button);
 
@@ -40,7 +45,7 @@ public class HomeActivity extends AppCompatActivity {
         account = (LinearLayout) findViewById(R.id.layoutPersonal);
         DB = new DBHelper(this);
 
-        // TODO: 11/12/2023 change username to represent current logged in user (not John) by checking the DB
+
         
         // TODO: 11/12/2023 Search bar text needs to be checked with DB if DNE. 
         //                      If doesn't Toast saying it doesn't if it does return event   
@@ -51,6 +56,8 @@ public class HomeActivity extends AppCompatActivity {
     
     public void sendToCalendar(View view) {
         Intent intent = new Intent(this, MainActivity.class);
+//        String name = intent.getStringExtra("userName");
+//        intent.putExtra("USERNAME",name);
         startActivity(intent);
     }
 
@@ -66,7 +73,13 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void sendToAccount(View view) {
-        Intent intent = new Intent(this, UserProfileActivity.class);
-        startActivity(intent);
+        //Get data from first intent
+        Intent intent = getIntent();
+        String userName = intent.getStringExtra("USERNAME");
+
+        //Start New Intent and pass data
+        Intent i = new Intent(this, UserProfileActivity.class);
+        i.putExtra("USERNAME", userName);
+        startActivity(i);
     }
 }

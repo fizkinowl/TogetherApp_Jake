@@ -2,13 +2,14 @@ package com.example.togethercalendar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
-// TODO: 11/16/2023 Fix crashing currently wont load and redirects back to Login page
 public class UserEditProfileActivity extends AppCompatActivity {
 
     EditText emailEntry, phoneEntry, availEntry, locationEntry, aboutEntry;
@@ -21,19 +22,31 @@ public class UserEditProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_edit_profile);
 
         // Assuming you have these elements in your layout XML file
-        emailEntry = findViewById(R.id.email_TextView);
-        phoneEntry = findViewById(R.id.mobile_TextView);
-        availEntry = findViewById(R.id.available_EditText);
-        locationEntry = findViewById(R.id.location_TextView);
-        aboutEntry = findViewById(R.id.info_TextView);
+        emailEntry = (EditText) findViewById(R.id.email_prof_EditText);
+        phoneEntry = findViewById(R.id.mobile_prof_EditText);
+        availEntry = findViewById(R.id.available_prof_EditText);
+        locationEntry = findViewById(R.id.location_prof_EditText);
+        aboutEntry = findViewById(R.id.info_prof_EditText);
         saveButton = findViewById(R.id.save_Btn);
         cancelButton = findViewById(R.id.cancel_btn);
         DB = new DBHelper(this);
 
-
-
-        // Get the username from the intent (assuming it's passed from the previous activity)
+        // TODO: 11/17/2023 Maybe Remove potential unsafe parse of data and implement the way in UserProfile
+        // Populate UI elements with existing profile data the username,email,mobile,etc. from previous UserProfileActivity
         String username = getIntent().getStringExtra("USERNAME");
+        String email = getIntent().getStringExtra("EMAIL");
+        String mobile = getIntent().getStringExtra("MOBILE");
+        String avail = getIntent().getStringExtra("AVAIL");
+        String loc = getIntent().getStringExtra("LOC");
+        String about = getIntent().getStringExtra("ABOUT");
+
+        // Set Editable Text to be their Current Profile information.
+        ((TextView)findViewById(R.id.username_prof_EditText)).setText(username);
+        ((TextView)findViewById(R.id.email_prof_EditText)).setText(email);
+        ((TextView)findViewById(R.id.mobile_prof_EditText)).setText(mobile);
+        ((TextView)findViewById(R.id.available_prof_EditText)).setText(avail);
+        ((TextView)findViewById(R.id.location_prof_EditText)).setText(loc);
+        ((TextView)findViewById(R.id.info_prof_EditText)).setText(about);
 
         // Populate the UI elements with the existing profile data
         // Fetch the existing data from the database using username and set the text of the EditTexts
@@ -64,7 +77,8 @@ public class UserEditProfileActivity extends AppCompatActivity {
 
     private void saveProfileChanges(String username, String newEmail, String newPhone,
                                     String newAvail, String newLocation, String newAbout) {
-        // TODO: Update the user profile in the database with the new data
+        // TODO: 11/17/2023 ADD validation same as Registration page.
+        //  Reason: Only want inputs that abide by original registration standards
         Boolean update = DB.updateUserData(username, newEmail, newPhone, newAvail, newLocation, newAbout);
 
         // Display a success message
@@ -75,6 +89,10 @@ public class UserEditProfileActivity extends AppCompatActivity {
         }
 
         // Finish the activity or navigate back to the profile screen
-        finish();
+        //finish();
+        Intent intent = new Intent(getApplicationContext(),UserProfileActivity.class);
+        String usernameProf = getIntent().getStringExtra("USERNAME");
+        intent.putExtra("USERNAME",usernameProf);
+        startActivity(intent);
     }
 }
