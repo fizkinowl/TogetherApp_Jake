@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:text="Date"
+        android:text="Date: "
         android:textSize="20sp"
         android:textAlignment="center"
         android:textColor="@color/black"/>
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:text="Time"
+        android:text="Time: "
         android:textSize="20sp"
         android:textAlignment="center"
         android:textColor="@color/black"/>

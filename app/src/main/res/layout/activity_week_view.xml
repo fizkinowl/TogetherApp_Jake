@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Daily"
+        android:text="Daily View"
         android:textColor="@color/blue"
         android:background="@null"
         android:textStyle="bold"
@@ -155,5 +155,15 @@
         android:layout_height="0dp"
         android:layout_weight="5"/>
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBackground"
+        app:itemIconSize="30dp"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/navigation_menu"
+        app:itemIconTint="@drawable/item_selector" />
 
 </LinearLayout>

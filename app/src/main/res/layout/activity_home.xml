@@ -315,7 +315,7 @@
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/navigation_menu"
-        />
+        app:itemIconTint="@drawable/item_selector" />
 
     <View
         android:id="@+id/viewDivider"
