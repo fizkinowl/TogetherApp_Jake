@@ -3,36 +3,35 @@ package com.example.togethercalendar;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Event
 {
     public static ArrayList<Event> eventsList = new ArrayList<>();
 
-    public static ArrayList<Event> eventsForDate(LocalDate date)
-    {
+    public static ArrayList<Event> eventsForDateDB(LocalDate localDate,List<Event> allEvents){
         ArrayList<Event> events = new ArrayList<>();
 
-        for(Event event : eventsList)
+        for(Event event : allEvents)
         {
-            if(event.getDate().equals(date))
+            if(event.getDate().equals(localDate)){
                 events.add(event);
+            }
         }
-
         return events;
     }
 
-    public static ArrayList<Event> eventsForDateAndTime(LocalDate date, LocalTime time)
+    public static ArrayList<Event> eventsForDateAndTimeFromDB(LocalDate localDate, LocalTime time, List<Event> allEvents)
     {
         ArrayList<Event> events = new ArrayList<>();
 
-        for(Event event : eventsList)
+        for(Event event : allEvents)
         {
             int eventHour = event.time.getHour();
             int cellHour = time.getHour();
-            if(event.getDate().equals(date) && eventHour == cellHour)
+            if(event.getDate().equals(localDate) && eventHour == cellHour)
                 events.add(event);
         }
-
         return events;
     }
 
@@ -47,7 +46,11 @@ public class Event
         this.date = date;
         this.time = time;
     }
-
+    public Event(String eventTitle, String eventDateString, String eventTimeString) {
+        this.name = eventTitle;
+        this.date = LocalDate.parse(eventDateString);
+        this.time = LocalTime.parse(eventTimeString);
+    }
     public String getName()
     {
         return name;

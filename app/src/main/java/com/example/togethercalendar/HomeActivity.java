@@ -1,8 +1,7 @@
 package com.example.togethercalendar;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
+
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -10,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -30,8 +28,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
         //Change textUserName to logged in usersName
-        Intent i = getIntent();
-        String name = i.getStringExtra("USERNAME");
+        String name = getIntent().getStringExtra("USERNAME");
         ((TextView)findViewById(R.id.textUsername)).setText(name);
 
         username = (TextView) findViewById(R.id.textUsername);
@@ -56,8 +53,8 @@ public class HomeActivity extends AppCompatActivity {
     
     public void sendToCalendar(View view) {
         Intent intent = new Intent(this, MainActivity.class);
-//        String name = intent.getStringExtra("userName");
-//        intent.putExtra("USERNAME",name);
+        String name = getIntent().getStringExtra("USERNAME");
+        intent.putExtra("USERNAME",name);
         startActivity(intent);
     }
 
@@ -74,9 +71,7 @@ public class HomeActivity extends AppCompatActivity {
 
     public void sendToAccount(View view) {
         //Get data from first intent
-        Intent intent = getIntent();
-        String userName = intent.getStringExtra("USERNAME");
-
+        String userName = getIntent().getStringExtra("USERNAME");
         //Start New Intent and pass data
         Intent i = new Intent(this, UserProfileActivity.class);
         i.putExtra("USERNAME", userName);

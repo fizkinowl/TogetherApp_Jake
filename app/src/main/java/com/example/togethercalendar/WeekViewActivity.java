@@ -9,12 +9,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
-import static com.example.togethercalendar.CalendarUtils.daysInMonthArray;
+
 import static com.example.togethercalendar.CalendarUtils.daysInWeekArray;
 import static com.example.togethercalendar.CalendarUtils.monthYearFromDate;
 
@@ -25,6 +24,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
     private ListView eventListView;
+    DBCalendar DBCalendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -82,20 +82,31 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         setEventAdpater();
     }
 
+    // Events being Called here (Weekly)
     private void setEventAdpater()
     {
-        ArrayList<Event> dailyEvents = Event.eventsForDate(CalendarUtils.selectedDate);
+        DBCalendar = new DBCalendar(this);
+        String username = getIntent().getStringExtra("USERNAME");
+        List<Event> allEventList = DBCalendar.getAllEvents(username);
+
+        ArrayList<Event> dailyEvents = Event.eventsForDateDB(CalendarUtils.selectedDate,allEventList);
         EventAdapter eventAdapter = new EventAdapter(getApplicationContext(), dailyEvents);
         eventListView.setAdapter(eventAdapter);
     }
 
     public void newEventAction(View view)
     {
-        startActivity(new Intent(this, EventEditActivity.class));
+        Intent intent = new Intent(this, EventEditActivity.class);
+        String name = getIntent().getStringExtra("USERNAME");
+        intent.putExtra("USERNAME",name);
+        startActivity(intent);
     }
 
     public void dailyAction(View view)
     {
-        startActivity(new Intent(this, DailyCalendarActivity.class));
+        Intent intent = new Intent(this, DailyCalendarActivity.class);
+        String name = getIntent().getStringExtra("USERNAME");
+        intent.putExtra("USERNAME",name);
+        startActivity(intent);
     }
 }
