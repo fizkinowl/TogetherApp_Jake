@@ -3,17 +3,11 @@ package com.example.togethercalendar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
-import android.media.MediaParser;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.time.LocalDate;
-import java.time.YearMonth;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import static com.example.togethercalendar.CalendarUtils.daysInMonthArray;
@@ -23,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
 {
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
+    DBCalendar DBCalendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -32,6 +27,8 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
         initWidgets();
         CalendarUtils.selectedDate = LocalDate.now();
         setMonthView();
+        DBCalendar = new DBCalendar(this);
+        String username = getIntent().getStringExtra("USERNAME");
     }
 
     private void initWidgets()
@@ -76,6 +73,8 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
     public void weeklyAction(View view)
     {
         Intent intent = new Intent(this, WeekViewActivity.class);
+        String name = getIntent().getStringExtra("USERNAME");
+        intent.putExtra("USERNAME",name);
         startActivity(intent);
     }
 

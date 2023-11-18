@@ -3,7 +3,6 @@ package com.example.togethercalendar;
 import static com.example.togethercalendar.CalendarUtils.selectedDate;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,7 +22,7 @@ public class DailyCalendarActivity extends AppCompatActivity
     private TextView monthDayText;
     private TextView dayOfWeekTV;
     private ListView hourListView;
-
+    DBCalendar DBCalendar;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -60,14 +59,20 @@ public class DailyCalendarActivity extends AppCompatActivity
         hourListView.setAdapter(hourAdapter);
     }
 
+    // Events being Called here (Daily)
     private ArrayList<HourEvent> hourEventList()
     {
-        ArrayList<HourEvent> list = new ArrayList<>();
+        DBCalendar = new DBCalendar(this);
+        String username = getIntent().getStringExtra("USERNAME");
+        // Get all the Events for a user into an ArrayList from DB
+        List<Event> allEventList = DBCalendar.getAllEvents(username);
 
+        ArrayList<HourEvent> list = new ArrayList<>();
+        // Use Events Arraylist to compare and populate UI
         for(int hour = 0; hour < 24; hour++)
         {
             LocalTime time = LocalTime.of(hour, 0);
-            ArrayList<Event> events = Event.eventsForDateAndTime(selectedDate, time);
+            ArrayList<Event> events = Event.eventsForDateAndTimeFromDB(selectedDate, time,allEventList);
             HourEvent hourEvent = new HourEvent(time, events);
             list.add(hourEvent);
         }
@@ -89,6 +94,9 @@ public class DailyCalendarActivity extends AppCompatActivity
 
     public void newEventAction(View view)
     {
-        startActivity(new Intent(this, EventEditActivity.class));
+        Intent intent = new Intent(this, EventEditActivity.class);
+        String name = getIntent().getStringExtra("USERNAME");
+        intent.putExtra("USERNAME",name);
+        startActivity(intent);
     }
 }
