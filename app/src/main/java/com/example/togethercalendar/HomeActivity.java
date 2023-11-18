@@ -28,33 +28,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setSelectedItemId(R.id.menuHome);
-
-        bottomNavigationView.setOnItemSelectedListener(item -> {
-            int id = item.getItemId();
-            if (id == R.id.menuHome) {
-                return true;
-            } else if (id == R.id.menuCalendar) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                finish();
-                return true;
-            } else if (id == R.id.menuProfile) {
-                startActivity(new Intent(getApplicationContext(), UserProfileActivity.class));
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                finish();
-                return true;
-            } else if (id == R.id.menuSettings) {
-                startActivity(new Intent(getApplicationContext(), UserEditProfileActivity.class));
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                finish();
-                return true;
-            } else {
-                return false;
-            }
-        });
-
 
         //Change textUserName to logged in usersName
         Intent i = getIntent();
@@ -93,7 +66,7 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-    // TODO: 11/12/2023 fix pathing sendToChat (Don't fucking know, no input yet. maybe similar to above)
+    // TODO: 11/12/2023 fix pathing sendToChat (Don't know, no input yet. maybe similar to above)
     public void sendToChat(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
