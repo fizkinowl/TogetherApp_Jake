@@ -22,32 +22,21 @@
             android:layout_width="47dp"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_cog"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:textStyle="bold"
-            android:onClick="login"/>
+            android:onClick="home"/>
 
         <Button
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Weekly Events "
+            android:text=" Weekly Events "
             android:textColor="@color/white"
             android:textStyle="bold"
             android:onClick="weeklyAction"
             android:backgroundTint="@color/gray"
             android:textSize="20sp"/>
-
-        <Button
-            android:id="@+id/profile"
-            android:layout_width="47dp"
-            android:layout_height="wrap_content"
-            android:onClick="profile"
-            android:text="+"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-
 
     </LinearLayout>
 

@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    tools:context=".HomeActivity">
+    android:background="@color/pastel_blue"
+    tools:context=".HomeActivity"
+    tools:ignore="ExtraText">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutHeader"
@@ -71,7 +72,7 @@
             <EditText
                 android:id="@+id/search_Home_EditText"
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="48dp"
                 android:layout_weight="1"
                 android:background="@null"
                 android:hint="@string/search_elements"
@@ -85,8 +86,8 @@
 
             <ImageView
                 android:id="@+id/searchBtn_Home_Button"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:background="@drawable/search_icon_background"
                 android:contentDescription="@string/app_name"
                 android:padding="6dp"

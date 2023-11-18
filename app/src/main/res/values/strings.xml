@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">CalendarAppExample</string>
-    <string name="back"><![CDATA[<-]]></string>
-    <string name="forward"><![CDATA[->]]></string>
+    <string name="back"><![CDATA[<]]></string>
+    <string name="forward"><![CDATA[>]]></string>
     <string name="john">John</string>
     <string name="hello">Hello</string>
     <string name="search_elements">Search elements</string>

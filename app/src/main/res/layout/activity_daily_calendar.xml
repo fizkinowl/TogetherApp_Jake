@@ -18,12 +18,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/back"
+            android:text="back"
             android:textColor="@color/blue"
-            android:background="@null"
-            android:textStyle="bold"
+            android:textStyle="normal|italic"
             android:onClick="previousDayAction"
-            android:textSize="20sp"/>
+            android:textSize="12sp"/>
 
         <TextView
             android:id="@+id/monthDayText"
@@ -33,18 +32,17 @@
             android:text="Feb 2021"
             android:textSize="20sp"
             android:textAlignment="center"
-            android:textColor="@color/black"/>
+            android:textColor="@color/dark_blue"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/forward"
+            android:text="next"
             android:textColor="@color/blue"
-            android:background="@null"
-            android:textStyle="bold"
+            android:textStyle="normal|italic"
             android:onClick="nextDayAction"
-            android:textSize="20sp"/>
+            android:textSize="12sp"/>
 
     </LinearLayout>
 
@@ -52,11 +50,11 @@
         android:id="@+id/dayOfWeekTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Monday"
         android:layout_marginBottom="20dp"
-        android:textColor="@color/gray"
+        android:text="Monday"
         android:textAlignment="center"
-        android:textSize="18sp"/>
+        android:textColor="@color/dark_blue"
+        android:textSize="18sp" />
 
     <Button
         android:layout_width="wrap_content"
