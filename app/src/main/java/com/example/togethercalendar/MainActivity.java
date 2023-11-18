@@ -26,12 +26,12 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        String NAME = getIntent().getStringExtra("USERNAME");
 
         //bottom navigation bar toggle method to get to different UI pages
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.menuCalendar);
 
-        String NAME = getIntent().getStringExtra("USERNAME");
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
             if (id == R.id.menuCalendar) {

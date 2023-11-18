@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -112,33 +113,24 @@ public class UserRegistrationActivity extends AppCompatActivity {
 
     // Method to validate the username
     private boolean isValidUsername(String username) {
-        // TODO: 11/16/2023 (Testing) uncomment out next line & comment out other return
-         return true;
         // Check if the username is at least 4 characters long and contains only alphanumeric characters
-        //return username.length() >= 4 && username.matches("^[a-zA-Z0-9]+$");
+        return username.length() >= 4 && username.matches("^[a-zA-Z0-9]+$");
     }
 
     // Method to validate the password
     private boolean isValidPassword(String password){
-        // TODO: 11/16/2023 (Testing) uncomment out next line & comment out other return
-         return true;
-        //return password.matches("^(?=.*[A-Za-z0-9])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z0-9\\d@$!%*?&]{6,}$");
+        return password.matches("^(?=.*[A-Za-z0-9])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z0-9\\d@$!%*?&]{6,}$");
     }
 
     // Method to validate the email
     private boolean isValidEmail(String email){
-        // TODO: 11/16/2023 (Testing) uncomment out next line & comment out other return
-        return true;
-        //if(Patterns.EMAIL_ADDRESS.matcher(email).matches())
-        //return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
     // Function to validate the mobile number
     private boolean isValidMobileNumber(String mobile) {
-        // TODO: 11/16/2023 (Testing) uncomment out next line & comment out other return
-        return true;
-        // RegEx to check mobile number has valid format of 10 digits
-        //return mobile.matches("\\d{10}");
+         //RegEx to check mobile number has valid format of 10 digits
+        return mobile.matches("\\d{10}");
     }
 }
 

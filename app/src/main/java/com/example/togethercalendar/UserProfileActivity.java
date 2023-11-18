@@ -20,6 +20,7 @@ public class UserProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile_activity);
         String NAME = getIntent().getStringExtra("USERNAME");
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.menuProfile);
 
@@ -47,9 +48,7 @@ public class UserProfileActivity extends AppCompatActivity {
             }
         });
 
-        // TODO: 11/17/2023 ADD text/textColor to all xml TextViews (waiting for Gui update, don't want to overlap)
-        // TODO: 11/17/2023 Fix ID ref's in xml for duplicates (getting real annoying)
-        //Change textUserName to logged in usersName
+        //Changes textUserName to logged in usersName
         Intent i = getIntent();
         String name = i.getStringExtra("USERNAME");
         ((TextView)findViewById(R.id.username_prof_EditText)).setText(name);
@@ -84,10 +83,8 @@ public class UserProfileActivity extends AppCompatActivity {
             }
         }
 
-        // Query DB of user data to be passed for Editing Profile
-        // This is done so that when user is editing the entry fields won't be empty
-        // and knows what their previous entries are.
-        // TODO: 11/17/2023 Maybe Remove potential unsafe parse of data and implement the way in UserProfile
+        // Query DB of user data to be passed for Editing Profile.This is done so that when user is
+        // editing the entry fields won't be empty and knows what their previous entries are.
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,11 +94,6 @@ public class UserProfileActivity extends AppCompatActivity {
 
                 Intent i = new Intent(getApplicationContext(),UserEditProfileActivity.class);
                 i.putExtra("USERNAME",username);
-                i.putExtra("EMAIL", userData.getEmail());
-                i.putExtra("MOBILE", userData.getMobile());
-                i.putExtra("AVAIL", userData.getAvailability());
-                i.putExtra("LOC", userData.getLocation());
-                i.putExtra("ABOUT", userData.getAbout());
                 startActivity(i);
             }
         });

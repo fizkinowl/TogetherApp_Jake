@@ -66,7 +66,6 @@ public class DBHelper extends SQLiteOpenHelper {
         return result != -1;
     }
 
-    // TODO: 11/17/2023 Add changes to get userImage
     // Method to get User Data and populate the UserProfileActivity
     public UserData getUserData(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -91,7 +90,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return userData;
     }
 
-    // TODO: 11/17/2023 Add changes to update userImage
+
     //Method to store updated user Information and store in DB
     public boolean updateUserData(String username, String email, String phone, String avail, String location, String about) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -138,9 +137,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    /**
-     * Login
-     */
+    /** Login **/
 
     // Method to retrieve the hashed password based on the username
     @SuppressLint("Range")

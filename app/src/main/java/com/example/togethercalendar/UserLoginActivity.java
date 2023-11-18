@@ -16,7 +16,7 @@ public class UserLoginActivity extends AppCompatActivity {
 
     EditText username, password;
     TextView signUp;
-    Button btnlogin;
+    Button btnLogin;
     DBHelper DB;
 
     @Override
@@ -26,11 +26,11 @@ public class UserLoginActivity extends AppCompatActivity {
 
         username = findViewById(R.id.username_login_textView);
         password = findViewById(R.id.password_login_TextView);
-        btnlogin = findViewById(R.id.login_Button);
+        btnLogin = findViewById(R.id.login_Button);
         signUp = findViewById(R.id.signUp_TextView);
         DB = new DBHelper(this);
 
-        btnlogin.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String user = username.getText().toString();

@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class UserEditProfileActivity extends AppCompatActivity {
 
-    EditText emailEntry, phoneEntry, availEntry, locationEntry, aboutEntry;
+    EditText usernameEntry,emailEntry, phoneEntry, availEntry, locationEntry, aboutEntry;
     Button saveButton, cancelButton;
     DBHelper DB;
 
@@ -20,8 +20,9 @@ public class UserEditProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_edit_profile);
-
+        String username = getIntent().getStringExtra("USERNAME");
         // Assuming you have these elements in your layout XML file
+        usernameEntry = (EditText) findViewById(R.id.username_prof_EditText);
         emailEntry = (EditText) findViewById(R.id.email_prof_EditText);
         phoneEntry = findViewById(R.id.mobile_prof_EditText);
         availEntry = findViewById(R.id.available_prof_EditText);
@@ -31,25 +32,22 @@ public class UserEditProfileActivity extends AppCompatActivity {
         cancelButton = findViewById(R.id.cancel_btn);
         DB = new DBHelper(this);
 
-        // TODO: 11/17/2023 Maybe Remove potential unsafe parse of data and implement the way in UserProfile
         // Populate UI elements with existing profile data the username,email,mobile,etc. from previous UserProfileActivity
-        String username = getIntent().getStringExtra("USERNAME");
-        String email = getIntent().getStringExtra("EMAIL");
-        String mobile = getIntent().getStringExtra("MOBILE");
-        String avail = getIntent().getStringExtra("AVAIL");
-        String loc = getIntent().getStringExtra("LOC");
-        String about = getIntent().getStringExtra("ABOUT");
+        Intent intent = getIntent();
+        if (intent.hasExtra("USERNAME")) {
+            // Retrieve user data from DBHelper
+            UserData userData = DB.getUserData(username);
 
-        // Set Editable Text to be their Current Profile information.
-        ((TextView)findViewById(R.id.username_prof_EditText)).setText(username);
-        ((TextView)findViewById(R.id.email_prof_EditText)).setText(email);
-        ((TextView)findViewById(R.id.mobile_prof_EditText)).setText(mobile);
-        ((TextView)findViewById(R.id.available_prof_EditText)).setText(avail);
-        ((TextView)findViewById(R.id.location_prof_EditText)).setText(loc);
-        ((TextView)findViewById(R.id.info_prof_EditText)).setText(about);
-
-        // Populate the UI elements with the existing profile data
-        // Fetch the existing data from the database using username and set the text of the EditTexts
+            // Populate TextViews with user data
+            if (userData != null) {
+                usernameEntry.setText(userData.getUsername());
+                emailEntry.setText(userData.getEmail());
+                phoneEntry.setText(userData.getMobile());
+                availEntry.setText(userData.getAvailability());
+                locationEntry.setText(userData.getLocation());
+                aboutEntry.setText(userData.getAbout());
+            }
+        }
 
         // Set up the click listeners for the buttons
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -77,19 +75,15 @@ public class UserEditProfileActivity extends AppCompatActivity {
 
     private void saveProfileChanges(String username, String newEmail, String newPhone,
                                     String newAvail, String newLocation, String newAbout) {
-        // TODO: 11/17/2023 ADD validation same as Registration page.
-        //  Reason: Only want inputs that abide by original registration standards
         Boolean update = DB.updateUserData(username, newEmail, newPhone, newAvail, newLocation, newAbout);
 
-        // Display a success message
+        // Display a success message if updated to DB
         if (update) {
             Toast.makeText(UserEditProfileActivity.this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(UserEditProfileActivity.this, "Failed to update profile", Toast.LENGTH_SHORT).show();
         }
 
-        // Finish the activity or navigate back to the profile screen
-        //finish();
         Intent intent = new Intent(getApplicationContext(),UserProfileActivity.class);
         String usernameProf = getIntent().getStringExtra("USERNAME");
         intent.putExtra("USERNAME",usernameProf);
