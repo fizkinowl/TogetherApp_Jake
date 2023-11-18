@@ -31,22 +31,23 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.menuCalendar);
 
+        String NAME = getIntent().getStringExtra("USERNAME");
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
             if (id == R.id.menuCalendar) {
                 return true;
             } else if (id == R.id.menuProfile) {
-                startActivity(new Intent(getApplicationContext(), UserProfileActivity.class));
+                startActivity(new Intent(getApplicationContext(), UserProfileActivity.class).putExtra("USERNAME",NAME));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
                 return true;
             } else if (id == R.id.menuHome) {
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                startActivity(new Intent(getApplicationContext(), HomeActivity.class).putExtra("USERNAME",NAME));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
                 return true;
             } else if (id == R.id.menuSettings) {
-                startActivity(new Intent(getApplicationContext(), UserEditProfileActivity.class));
+                startActivity(new Intent(getApplicationContext(), UserEditProfileActivity.class).putExtra("USERNAME",NAME));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
                 return true;

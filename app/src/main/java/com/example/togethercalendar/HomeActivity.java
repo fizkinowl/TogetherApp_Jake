@@ -25,6 +25,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        String NAME = getIntent().getStringExtra("USERNAME");
 
         //bottom navigation bar toggle method to get to different UI pages
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -35,17 +36,17 @@ public class HomeActivity extends AppCompatActivity {
             if (id == R.id.menuHome) {
                 return true;
             } else if (id == R.id.menuCalendar) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), MainActivity.class).putExtra("USERNAME",NAME));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
                 return true;
             } else if (id == R.id.menuProfile) {
-                startActivity(new Intent(getApplicationContext(), UserProfileActivity.class));
+                startActivity(new Intent(getApplicationContext(), UserProfileActivity.class).putExtra("USERNAME",NAME));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
                 return true;
             } else if (id == R.id.menuSettings) {
-                startActivity(new Intent(getApplicationContext(), UserEditProfileActivity.class));
+                startActivity(new Intent(getApplicationContext(), UserProfileActivity.class).putExtra("USERNAME",NAME));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
                 return true;
