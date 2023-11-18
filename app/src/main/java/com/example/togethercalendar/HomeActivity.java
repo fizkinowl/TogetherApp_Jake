@@ -26,6 +26,34 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        //bottom navigation bar toggle method to get to different UI pages
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.menuHome);
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.menuHome) {
+                return true;
+            } else if (id == R.id.menuCalendar) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                finish();
+                return true;
+            } else if (id == R.id.menuProfile) {
+                startActivity(new Intent(getApplicationContext(), UserProfileActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                finish();
+                return true;
+            } else if (id == R.id.menuSettings) {
+                startActivity(new Intent(getApplicationContext(), UserEditProfileActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                finish();
+                return true;
+            } else {
+                return false;
+            }
+        });
+
 
         //Change textUserName to logged in usersName
         String name = getIntent().getStringExtra("USERNAME");
