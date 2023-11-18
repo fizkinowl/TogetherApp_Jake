@@ -18,7 +18,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="back"
+            android:text="prev"
+            android:background="@null"
             android:textColor="@color/blue"
             android:textStyle="normal|italic"
             android:onClick="previousDayAction"
@@ -39,6 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="next"
+            android:background="@null"
             android:textColor="@color/blue"
             android:textStyle="normal|italic"
             android:onClick="nextDayAction"
@@ -72,5 +74,16 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBackground"
+        app:itemIconSize="30dp"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/navigation_menu"
+        app:itemIconTint="@drawable/item_selector" />
 
 </LinearLayout>

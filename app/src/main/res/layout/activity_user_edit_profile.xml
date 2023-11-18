@@ -250,8 +250,6 @@
                 android:textColor="#d3d8e3"
                 android:textSize="20dp" />
 
-
-
         </RelativeLayout>
 
     </LinearLayout>

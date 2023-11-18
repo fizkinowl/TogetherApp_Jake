@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class UserProfileActivity extends AppCompatActivity {
 
     TextView usernameTextView, emailTextView, mobileTextView, availableTextView, locationTextView, aboutTextView;
@@ -18,6 +20,34 @@ public class UserProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile_activity);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.menuProfile);
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.menuProfile) {
+                return true;
+            } else if (id == R.id.menuCalendar) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                finish();
+                return true;
+            } else if (id == R.id.menuHome) {
+                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                finish();
+                return true;
+            } else if (id == R.id.menuSettings) {
+                startActivity(new Intent(getApplicationContext(), UserEditProfileActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                finish();
+                return true;
+            } else {
+                return false;
+            }
+        });
+
         // TODO: 11/17/2023 ADD text/textColor to all xml TextViews (waiting for Gui update, don't want to overlap)
         // TODO: 11/17/2023 Fix ID ref's in xml for duplicates (getting real annoying)
         //Change textUserName to logged in usersName

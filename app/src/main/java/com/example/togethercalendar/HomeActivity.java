@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,11 +14,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class HomeActivity extends AppCompatActivity {
-
-    // TODO: 11/12/2023 fix Nav Bar to Open and send to Activities 
-
-    // TODO: 11/12/2023 add fields for various items in HomeActivity
     TextView username;
     EditText searchTxt;
     Button searchBtn;
@@ -28,6 +27,34 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.menuHome);
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.menuHome) {
+                return true;
+            } else if (id == R.id.menuCalendar) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                finish();
+                return true;
+            } else if (id == R.id.menuProfile) {
+                startActivity(new Intent(getApplicationContext(), UserProfileActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                finish();
+                return true;
+            } else if (id == R.id.menuSettings) {
+                startActivity(new Intent(getApplicationContext(), UserEditProfileActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                finish();
+                return true;
+            } else {
+                return false;
+            }
+        });
+
 
         //Change textUserName to logged in usersName
         Intent i = getIntent();

@@ -8,56 +8,44 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-
-
-
     <!-- Test btn to change Activities (Login)    -->
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <Button
-            android:layout_marginRight="0dp"
-            android:id="@+id/settings"
-            android:layout_width="47dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_cog"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:onClick="home"/>
 
-        <Button
-
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text=" Weekly Events "
-            android:textColor="@color/white"
-            android:textStyle="bold"
+            android:background="@null"
             android:onClick="weeklyAction"
-            android:backgroundTint="@color/gray"
-            android:textSize="20sp"/>
+            android:text="Weekly View"
+            android:textColor="@color/blue"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/back"
+            android:text="prev"
             android:textColor="@color/blue"
             android:background="@null"
             android:textStyle="bold"
             android:onClick="previousMonthAction"
-            android:textSize="20sp"/>
+            android:textSize="10sp"/>
 
         <TextView
             android:id="@+id/monthYearTV"
@@ -67,18 +55,18 @@
             android:text="Feb 2021"
             android:textSize="20sp"
             android:textAlignment="center"
-            android:textColor="@color/black"/>
+            android:textColor="@color/dark_blue"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/forward"
+            android:text="next"
             android:textColor="@color/blue"
             android:background="@null"
             android:textStyle="bold"
             android:onClick="nextMonthAction"
-            android:textSize="20sp"/>
+            android:textSize="10sp"/>
 
     </LinearLayout>
 
@@ -150,13 +138,23 @@
             android:textAlignment="center"
             android:textSize="16sp"/>
 
-
     </LinearLayout>
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/calendarRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="525dp"
+        android:layout_weight="5"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBackground"
+        app:itemIconSize="30dp"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/navigation_menu"
+        app:itemIconTint="@drawable/item_selector" />
 
 </LinearLayout>

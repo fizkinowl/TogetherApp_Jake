@@ -18,6 +18,8 @@ import static com.example.togethercalendar.CalendarUtils.daysInMonthArray;
 import static com.example.togethercalendar.CalendarUtils.daysInWeekArray;
 import static com.example.togethercalendar.CalendarUtils.monthYearFromDate;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class WeekViewActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener
 {
     private TextView monthYearText;
@@ -29,6 +31,37 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_week_view);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.menuCalendar);
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.menuCalendar) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                finish();
+                return true;
+            } else if (id == R.id.menuProfile) {
+                startActivity(new Intent(getApplicationContext(), UserProfileActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                finish();
+                return true;
+            } else if (id == R.id.menuHome) {
+                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                finish();
+                return true;
+            } else if (id == R.id.menuSettings) {
+                startActivity(new Intent(getApplicationContext(), UserEditProfileActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                finish();
+                return true;
+            } else {
+                return false;
+            }
+        });
+
         initWidgets();
         setWeekView();
     }

@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.time.LocalTime;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
@@ -29,6 +31,37 @@ public class DailyCalendarActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_calendar);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.menuCalendar);
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.menuCalendar) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                finish();
+                return true;
+            } else if (id == R.id.menuProfile) {
+                startActivity(new Intent(getApplicationContext(), UserProfileActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                finish();
+                return true;
+            } else if (id == R.id.menuHome) {
+                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                finish();
+                return true;
+            } else if (id == R.id.menuSettings) {
+                startActivity(new Intent(getApplicationContext(), UserEditProfileActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                finish();
+                return true;
+            } else {
+                return false;
+            }
+        });
+
         initWidgets();
     }
 
